@@ -53,11 +53,8 @@ export default function AuthPage() {
         const username = form.username.value;
         const email = form.signupEmail.value;
         const password = form.signupPassword.value;
-        const age = form.age.value;
-        const language = form.language.value;
-        const isCybersecurityProfessional = form.isCybersecurityProfessional.checked;
 
-        const response = await apiReq("signup", { username, email, password, age, language, isCybersecurityProfessional });
+        const response = await apiReq("signup", { username, email, password });
 
         if (!response.success) {
             console.error(response.message);
@@ -132,16 +129,6 @@ export default function AuthPage() {
                     <div className="space-y-2">
                     <Label htmlFor="signupPassword">Password</Label>
                     <Input id="signupPassword" type="password" required />
-                    </div>
-                    <div className="space-y-2">
-                    <Label htmlFor="age">Age</Label>
-                    <Input id="age" type="number" placeholder="18" required />
-                    <Label htmlFor="language">Language</Label>
-                    <Input id="language" type="text" placeholder="en" required />
-                    <div className="flex flex-row">
-                        <Label className="flex-1" htmlFor="isCybersecurityProfessional">Are you a cybersecurity professional?</Label>
-                        <Input id="isCybersecurityProfessional" type="checkbox" size={5} />
-                    </div>
                     </div>
                     <Button type="submit" className="w-full">
                     Sign Up
