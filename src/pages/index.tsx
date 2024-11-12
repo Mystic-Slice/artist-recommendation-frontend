@@ -12,7 +12,7 @@ import { Card, CardContent } from "~/components/ui/card"
 import { UserContext } from '~/contexts/UserProvider'
 import Image from 'next/image'
 import { ScrollArea } from '~/components/ui/scroll-area'
-import { SquareArrowOutUpRight } from 'lucide-react'
+import { Brush, Link, Link2, Music, SquareArrowOutUpRight } from 'lucide-react'
 
 type ItemType = 'audio' | 'image'
 
@@ -99,10 +99,16 @@ export default function Home() {
             <SelectItem value="image">Image</SelectItem>
           </SelectContent>
       </Select>
-      <Button type="submit" disabled={!file || isLoading}>
+      <div className="flex flex-row justify-between space-x-[250px] mt-16">
+        <Button onClick={logout}>
+          Logout
+        </Button>
+      <Button type="submit" disabled={!file || isLoading} >
         {isLoading ? submitMessage : 'Submit'}
       </Button>
+      </div>
     </form>
+      
     </div>
   )
 
@@ -114,12 +120,12 @@ export default function Home() {
         {items.map((item, idx) => (
           <p
             key={item.url}
-            className={`p-4 cursor-pointer hover:bg-gray-100 w-full text-center ${
+            className={`p-4 cursor-pointer hover:bg-gray-100 w-full text-center flex flex-row truncate ${
               selectedItem?.url === item.url ? 'bg-gray-200' : ''
             }`}
             onClick={() => setSelectedItem(item)}
           >
-            {itemType == 'audio' ? "Music" : "Art"} {idx}
+            {itemType == 'audio' ? <Music className='mr-2'/> : <Brush className='mr-2'/>} <p>{item.title}</p>
           </p>
         ))}
         </ScrollArea>
@@ -134,16 +140,16 @@ export default function Home() {
 
   const renderArtistInfo = (artistInfo: any) => (
     <div className="mt-16 w-[90%] overflow-hidden ml-4 mr-4">
-      <h2 className="text-lg font-semibold">Connect with the artist</h2>
+      <a href={artistInfo.portfolio} target='_blank'><h2 className="text-lg font-semibold underline ">Connect with the artist</h2></a>
       <p>
         <strong>Name:</strong> {artistInfo.name}
       </p>
       <p>
         <strong>Email:</strong> {artistInfo.email}
       </p>
-      <p>
-        <strong>Portfolio:</strong> <a href={artistInfo.portfolio} target='_blank'><SquareArrowOutUpRight/></a>
-      </p>
+      {/* <p className='flex flex-row underline justify-center items-center text-blue-500 my-2'>
+      <a href={artistInfo.portfolio} target='_blank'><strong >Portfolio</strong> </a>
+      </p> */}
     </div>
   )
 

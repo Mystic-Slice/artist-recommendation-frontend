@@ -40,5 +40,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         res.status(response.status).json({ success: true, user: { email } })
         return
     }
-    res.status(response.status).json({ success: false, message: "This shouldnt have happened." })
+    res.status(response.status).json({ success: false, message: "Invalid Credentials" })
 }
