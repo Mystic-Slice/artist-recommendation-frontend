@@ -3,7 +3,7 @@ ArtWave is an AI-powered app that intelligently matches you with like-minded cre
 
 For detailed information about the project, please refer to this blog post: [MysticSlice-ArtWave](https://mystic-slice.github.io/projects/artwave/)
 
-Link to the frontend repository: [ArtWave-Backend](https://github.com/Mystic-Slice/artwave-backend)
+Link to the backend repository: [ArtWave-Backend](https://github.com/Mystic-Slice/artwave-backend)
 
 ### Demo
 
